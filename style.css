@@ -1,0 +1,1097 @@
+/* ==========================================================================
+   MOMENT — PERSONALIZED APOLOGY EXPERIENCE FOR TUSHAR BHAI
+   Visual Direction: Warm Ivory, Deep Burgundy, Deckle Paper, Editorial Serif
+   ========================================================================== */
+
+:root {
+  /* Warm Parchment & Ivory Palette */
+  --bg-parchment: #FAF7F2;
+  --bg-parchment-deep: #F3ECE2;
+  --bg-card: #FFFCF8;
+  --bg-card-subtle: #F9F4EE;
+  
+  /* Burgundy & Rose Accents */
+  --burgundy-deep: #3B121B;
+  --burgundy-primary: #5C1D24;
+  --burgundy-rich: #6F212D;
+  --burgundy-accent: #8C2A39;
+  --rose-muted: #B85D6B;
+  --rose-soft: #F6EBED;
+  --rose-tint: rgba(184, 93, 107, 0.10);
+  --wax-red: #8B1E28;
+  --wax-red-glow: rgba(139, 30, 40, 0.28);
+
+  /* Deep Ink & Text Tones */
+  --ink-primary: #28191E;
+  --ink-secondary: #574448;
+  --ink-muted: #7E6C70;
+  --ink-light: #A5969A;
+
+  /* Paper Borders & Tactile Shadows */
+  --border-paper: rgba(92, 29, 36, 0.12);
+  --border-subtle: rgba(92, 29, 36, 0.08);
+  --border-card-highlight: rgba(255, 255, 255, 0.85);
+  --paper-shadow: 0 12px 34px rgba(59, 18, 27, 0.07), 0 3px 10px rgba(59, 18, 27, 0.04);
+  --paper-shadow-hover: 0 16px 42px rgba(59, 18, 27, 0.11), 0 4px 14px rgba(59, 18, 27, 0.06);
+  --letter-shadow: 0 18px 48px rgba(59, 18, 27, 0.08), 0 4px 16px rgba(59, 18, 27, 0.04);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-handwritten: 'Caveat', cursive, sans-serif;
+
+  /* Dimensions & Spacing */
+  --max-content-width: 580px;
+  --header-height: 64px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* --------------------------------------------------------------------------
+   Reset & Baseline
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--bg-parchment);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Background Ambiance: Ambient Canvas & Grain Overlay
+   -------------------------------------------------------------------------- */
+#ambient-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   App Header & Progress Bar
+   -------------------------------------------------------------------------- */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--header-height) + var(--safe-top));
+  padding-top: var(--safe-top);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(250, 247, 242, 0.94) 0%, rgba(250, 247, 242, 0.8) 75%, transparent 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding-left: max(16px, var(--safe-left));
+  padding-right: max(16px, var(--safe-right));
+}
+
+.header-inner {
+  width: 100%;
+  max-width: var(--max-content-width);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.16em;
+  color: var(--burgundy-primary);
+}
+
+.brand-divider {
+  color: var(--rose-muted);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.recipient-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+
+.header-nav-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Previous button */
+.nav-prev-btn {
+  appearance: none;
+  border: 1px solid var(--border-paper);
+  background: var(--bg-card);
+  border-radius: 999px;
+  padding: 5px 12px 5px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--ink-secondary);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.nav-prev-btn .nav-icon {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+}
+
+.nav-prev-btn:hover:not(:disabled) {
+  color: var(--burgundy-primary);
+  border-color: var(--rose-muted);
+  background: #FFF;
+  transform: translateX(-1px);
+}
+
+.nav-prev-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Progress pill */
+.progress-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 4px 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.progress-track {
+  width: 44px;
+  height: 4px;
+  background: rgba(92, 29, 36, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 16.66%;
+  background: linear-gradient(90deg, var(--rose-muted), var(--burgundy-primary));
+  border-radius: 999px;
+  transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.progress-text {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   Main Viewport & Scene Structure
+   -------------------------------------------------------------------------- */
+.experience-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.scene-panel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: calc(var(--header-height) + var(--safe-top) + 12px) max(18px, var(--safe-left)) calc(var(--safe-bottom) + 24px) max(18px, var(--safe-right));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(18px) scale(0.99);
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              visibility 0.5s ease;
+}
+
+.scene-panel.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.panel-content {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   Typography Components
+   -------------------------------------------------------------------------- */
+.text-center {
+  text-align: center;
+}
+
+.eyebrow-pill {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--burgundy-primary);
+  text-transform: uppercase;
+  background: var(--rose-tint);
+  border: 1px solid rgba(184, 93, 107, 0.22);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.headline-serif {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6.2vw, 2.75rem);
+  font-weight: 600;
+  color: var(--burgundy-deep);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+
+.lead-quiet {
+  color: var(--ink-secondary);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.8rem, 5.5vw, 2.35rem);
+}
+
+.body-intro {
+  font-size: clamp(1rem, 3.4vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Paper Sheet Container
+   -------------------------------------------------------------------------- */
+.letter-sheet {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-paper);
+  border-radius: 12px;
+  padding: clamp(24px, 5.5vw, 36px) clamp(20px, 4.8vw, 32px);
+  box-shadow: var(--letter-shadow);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle deckle paper border highlight */
+.letter-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px dashed rgba(92, 29, 36, 0.08);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.sheet-accent-motif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 180px;
+  margin-bottom: 16px;
+  color: var(--rose-muted);
+  opacity: 0.75;
+}
+
+.motif-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+}
+
+.motif-symbol {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons & Interactive Elements
+   -------------------------------------------------------------------------- */
+.actions-row {
+  margin-top: clamp(22px, 5vw, 32px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  appearance: none;
+  border: none;
+  background: linear-gradient(135deg, var(--burgundy-primary) 0%, var(--burgundy-rich) 100%);
+  color: #FFFDFB;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 8px 22px rgba(92, 29, 36, 0.24), 0 2px 6px rgba(92, 29, 36, 0.12);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  min-height: 48px;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--burgundy-rich) 0%, var(--burgundy-accent) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(92, 29, 36, 0.32), 0 4px 10px rgba(92, 29, 36, 0.16);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 14px rgba(92, 29, 36, 0.22);
+}
+
+.btn-secondary {
+  appearance: none;
+  border: 1px solid var(--border-paper);
+  background: var(--bg-card);
+  color: var(--burgundy-primary);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 12px 26px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(59, 18, 27, 0.05);
+  transition: all 0.22s ease;
+  min-height: 46px;
+}
+
+.btn-secondary:hover {
+  background: #FFFFFF;
+  border-color: var(--rose-muted);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 18, 27, 0.09);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.nav-prev-btn:focus-visible,
+.envelope-card:focus-visible {
+  outline: 2px solid var(--burgundy-accent);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   SCENE 1: ENVELOPE INTERACTION
+   -------------------------------------------------------------------------- */
+.envelope-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(20px, 4.5vw, 30px);
+}
+
+.envelope-card {
+  position: relative;
+  width: clamp(230px, 60vw, 280px);
+  height: clamp(150px, 40vw, 180px);
+  background: #EFE4D6;
+  border-radius: 8px;
+  box-shadow: 0 16px 38px rgba(59, 18, 27, 0.12), 0 4px 12px rgba(59, 18, 27, 0.05);
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.envelope-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 46px rgba(59, 18, 27, 0.16), 0 6px 16px rgba(59, 18, 27, 0.08);
+}
+
+/* Envelope Flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: calc(clamp(230px, 60vw, 280px) / 2) solid transparent;
+  border-right: calc(clamp(230px, 60vw, 280px) / 2) solid transparent;
+  border-top: clamp(80px, 22vw, 98px) solid #E4D6C4;
+  transform-origin: top;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 4;
+}
+
+/* Envelope Pocket */
+.envelope-pocket {
+  position: absolute;
+  inset: 0;
+  background: #EADDCB;
+  clip-path: polygon(0% 0%, 50% 55%, 100% 0%, 100% 100%, 0% 100%);
+  border-radius: 0 0 8px 8px;
+  z-index: 3;
+}
+
+/* Letter peek inside envelope */
+.letter-peek {
+  position: absolute;
+  top: 18px;
+  left: 14px;
+  right: 14px;
+  height: 80%;
+  background: #FFFCF7;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.letter-peek-rule {
+  height: 2px;
+  background: rgba(92, 29, 36, 0.14);
+  border-radius: 2px;
+  width: 85%;
+}
+
+.letter-peek-rule.short {
+  width: 55%;
+}
+
+/* Wax Seal */
+.wax-seal {
+  position: absolute;
+  top: clamp(65px, 18vw, 82px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  background: radial-gradient(circle at 35% 35%, #AB2735 0%, var(--wax-red) 70%, #681119 100%);
+  border-radius: 50%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px var(--wax-red-glow), inset 0 2px 3px rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: transform 0.25s ease, opacity 0.4s ease;
+}
+
+.wax-seal:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+.seal-ring {
+  width: 32px;
+  height: 32px;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seal-heart {
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Envelope Open State */
+.envelope-card.opening .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope-card.opening .wax-seal {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.6);
+  pointer-events: none;
+}
+
+.envelope-card.opening .letter-peek {
+  transform: translateY(-38px);
+}
+
+/* --------------------------------------------------------------------------
+   SCENE 2: SINCERE ACKNOWLEDGEMENT
+   -------------------------------------------------------------------------- */
+.acknowledgement-sheet {
+  max-width: 520px;
+}
+
+.acknowledged-quotes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 20px 0 16px;
+}
+
+.quote-card {
+  position: relative;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px 20px 16px 36px;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.quote-card.highlight-box {
+  background: #FFFDFB;
+  border-color: rgba(184, 93, 107, 0.25);
+  box-shadow: 0 4px 14px rgba(92, 29, 36, 0.04);
+}
+
+.quote-mark {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--rose-muted);
+  opacity: 0.6;
+}
+
+.quote-line {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3.8vw, 1.35rem);
+  font-weight: 500;
+  color: var(--ink-primary);
+  line-height: 1.45;
+}
+
+.quote-reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: quoteFadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+@keyframes quoteFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.handwritten-annotation {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.2rem, 3.8vw, 1.35rem);
+  color: var(--rose-muted);
+  margin-top: 10px;
+  text-align: center;
+  transform: rotate(-1deg);
+}
+
+/* --------------------------------------------------------------------------
+   SCENE 3: MORE THAN A FRIEND (Brotherhood Highlight)
+   -------------------------------------------------------------------------- */
+.brotherhood-sheet {
+  max-width: 520px;
+}
+
+.brotherhood-revelation {
+  position: relative;
+  margin: 18px 0;
+  padding: 24px 20px;
+  background: linear-gradient(180deg, rgba(246, 235, 237, 0.5) 0%, rgba(255, 252, 248, 0.9) 100%);
+  border: 1px solid rgba(184, 93, 107, 0.22);
+  border-radius: 12px;
+  width: 100%;
+}
+
+.brotherhood-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid rgba(184, 93, 107, 0.28);
+  color: var(--burgundy-primary);
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(92, 29, 36, 0.08);
+}
+
+.brotherhood-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.brotherhood-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 6.5vw, 2.85rem);
+  font-weight: 700;
+  color: var(--burgundy-rich);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.brotherhood-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 220px;
+  margin: 8px auto 14px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(184, 93, 107, 0.35);
+}
+
+.divider-heart {
+  font-size: 0.95rem;
+}
+
+.brotherhood-subtext {
+  font-size: clamp(0.96rem, 3.2vw, 1.08rem);
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   SCENE 4: THE ACTUAL APOLOGY LETTER (Exact Sender Message)
+   -------------------------------------------------------------------------- */
+.formal-letter-sheet {
+  background: #FFFDF9;
+  border: 1px solid var(--border-paper);
+  padding: clamp(26px, 6vw, 40px) clamp(20px, 5vw, 36px);
+  position: relative;
+  text-align: left;
+}
+
+.formal-letter-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(92, 29, 36, 0.09);
+  padding-bottom: 16px;
+}
+
+.letter-seal-mini {
+  align-self: flex-end;
+  font-size: 0.85rem;
+  color: var(--rose-muted);
+  margin-top: -6px;
+  opacity: 0.6;
+}
+
+.letter-salutation-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4.8vw, 1.95rem);
+  font-weight: 600;
+  color: var(--burgundy-deep);
+  margin-top: 6px;
+}
+
+.formal-letter-body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.apology-paragraph {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3.8vw, 1.32rem);
+  line-height: 1.55;
+  color: var(--ink-primary);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.apology-paragraph.highlight {
+  color: var(--burgundy-rich);
+  font-weight: 600;
+}
+
+.formal-letter-footer {
+  width: 100%;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(92, 29, 36, 0.1);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.handwritten-signoff {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.25rem, 4vw, 1.45rem);
+  color: var(--burgundy-primary);
+}
+
+/* --------------------------------------------------------------------------
+   SCENE 5: THE EMOTIONAL CLOSE
+   -------------------------------------------------------------------------- */
+.closure-sheet {
+  max-width: 520px;
+}
+
+.connected-bond-motif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 260px;
+  margin: 22px auto 20px;
+}
+
+.bond-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(184, 93, 107, 0.08), var(--rose-muted));
+}
+
+.bond-line:last-child {
+  background: linear-gradient(90deg, var(--rose-muted), rgba(184, 93, 107, 0.08));
+}
+
+.bond-node {
+  padding: 0 12px;
+}
+
+.node-inner {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFF;
+  border: 1px solid rgba(184, 93, 107, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(92, 29, 36, 0.08);
+}
+
+.node-heart {
+  width: 18px;
+  height: 18px;
+  color: var(--burgundy-primary);
+}
+
+.supporting-close-copy {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 4vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--burgundy-deep);
+  margin-bottom: 12px;
+  max-width: 440px;
+}
+
+.reflection-subtext {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  max-width: 400px;
+}
+
+/* --------------------------------------------------------------------------
+   SCENE 6: FINAL INTERACTION & CLOSED STATE
+   -------------------------------------------------------------------------- */
+.final-sheet, .sealed-closed-sheet {
+  max-width: 500px;
+}
+
+.final-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.65rem, 5.2vw, 2.2rem);
+  font-weight: 700;
+  color: var(--burgundy-deep);
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.final-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 180px;
+  margin: 6px auto 14px;
+  color: var(--rose-muted);
+}
+
+.f-line {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+.f-dot {
+  font-size: 0.75rem;
+}
+
+.final-supporting {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--ink-secondary);
+}
+
+.final-sincerity-note {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.2rem, 3.8vw, 1.4rem);
+  color: var(--burgundy-primary);
+  margin-top: 12px;
+}
+
+.final-action-wrap {
+  margin-top: 26px;
+}
+
+/* Sealed / Closed State */
+.sealed-closed-sheet.hidden {
+  display: none !important;
+}
+
+.sealed-closed-sheet {
+  animation: gentleFadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes gentleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.sealed-stamp-wrap {
+  margin-bottom: 14px;
+}
+
+.closed-wax-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #AB2735 0%, var(--wax-red) 70%, #681119 100%);
+  box-shadow: 0 6px 18px var(--wax-red-glow), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.closed-seal-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.closed-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--burgundy-primary);
+  text-transform: uppercase;
+  background: var(--rose-tint);
+  border: 1px solid rgba(184, 93, 107, 0.25);
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.closed-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 5.5vw, 2.3rem);
+  font-weight: 600;
+  color: var(--burgundy-deep);
+  margin-bottom: 10px;
+}
+
+.closed-thankyou {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 3.8vw, 1.35rem);
+  font-weight: 500;
+  color: var(--burgundy-primary);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.closed-subtext {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  max-width: 420px;
+  margin: 0 auto 14px;
+}
+
+.closed-sincerity-note {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.15rem, 3.6vw, 1.35rem);
+  color: var(--burgundy-primary);
+  margin-bottom: 18px;
+}
+
+.closed-actions {
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Accessibility
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .scene-panel {
+    transform: none !important;
+    transition: opacity 0.1s linear, visibility 0.1s linear !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Mobile Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 58px;
+  }
+
+  .letter-sheet {
+    padding: 22px 18px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 13px 20px;
+  }
+
+  .btn-secondary {
+    width: 100%;
+    padding: 12px 20px;
+  }
+
+  .envelope-card {
+    width: 240px;
+    height: 154px;
+  }
+
+  .envelope-flap {
+    border-left-width: 120px;
+    border-right-width: 120px;
+    border-top-width: 82px;
+  }
+}

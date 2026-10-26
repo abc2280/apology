@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>MOMENT — For Tushar Bhai</title>
+  <meta name="description" content="A personal apology, brotherhood, and sincere reflection for Tushar Bhai.">
+  <meta name="theme-color" content="#FAF7F2">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="palette-warm">
+
+  <!-- Background Canvas for Ambient Warm Particles -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- Paper Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Persistent Header & Progress Navigation -->
+  <header class="app-header" aria-label="Experience header">
+    <div class="header-inner">
+      <div class="brand-wrap">
+        <span class="brand-name">MOMENT</span>
+        <span class="brand-divider">·</span>
+        <span class="recipient-tag" id="header-recipient-tag">FOR TUSHAR BHAI</span>
+      </div>
+
+      <div class="header-nav-wrap">
+        <button type="button" class="nav-prev-btn" id="btn-prev" aria-label="Go to previous scene" title="Go to previous scene" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span class="prev-label">Back</span>
+        </button>
+
+        <div class="progress-pill" aria-live="polite" aria-atomic="true">
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+          <span class="progress-text" id="progress-indicator">1 of 6</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Narrative Experience Container -->
+  <main class="experience-viewport" id="experience-viewport">
+
+    <!-- ========================================================
+         SCENE 1: THE OPENING (Envelope & Invitation)
+         ======================================================== -->
+    <section class="scene-panel active" id="scene-1" data-scene="1" aria-labelledby="scene1-headline">
+      <div class="panel-content">
+        <div class="envelope-container">
+          <div class="envelope-card" id="envelope-interactive" tabindex="0" role="button" aria-label="Open the letter for Tushar Bhai">
+            <div class="envelope-flap" id="envelope-flap"></div>
+            <div class="envelope-pocket"></div>
+            <div class="letter-peek" id="letter-peek">
+              <div class="letter-peek-rule"></div>
+              <div class="letter-peek-rule short"></div>
+            </div>
+            <div class="wax-seal" id="wax-seal" title="Click to open letter">
+              <div class="seal-ring">
+                <svg class="seal-heart" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="typography-block text-center">
+          <span class="eyebrow-pill" id="scene1-eyebrow">A LITTLE SOMETHING FOR YOU</span>
+          <h1 class="headline-serif" id="scene1-headline">Hey, Tushar Bhai. ❤️</h1>
+          <p class="body-intro" id="scene1-supporting">There’s something I’ve been meaning to say properly.</p>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" class="btn-primary" id="btn-scene-1">
+            <span class="btn-text" id="scene1-btn-text">OPEN THIS LETTER →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SCENE 2: A SINCERE ACKNOWLEDGEMENT (Accountability)
+         ======================================================== -->
+    <section class="scene-panel" id="scene-2" data-scene="2" aria-labelledby="scene2-headline">
+      <div class="panel-content">
+        <div class="letter-sheet acknowledgement-sheet">
+          <div class="sheet-accent-motif" aria-hidden="true">
+            <span class="motif-line"></span>
+            <span class="motif-symbol">✦</span>
+            <span class="motif-line"></span>
+          </div>
+
+          <span class="eyebrow-pill" id="scene2-eyebrow">HONEST ADMISSION</span>
+          <h2 class="headline-serif text-center" id="scene2-headline">I owe you an apology.</h2>
+
+          <div class="acknowledged-quotes" id="scene2-quotes-container">
+            <div class="quote-card quote-reveal" style="--reveal-delay: 150ms;">
+              <span class="quote-mark">“</span>
+              <p class="quote-line" id="scene2-line-1">I know I misbehaved and got angry.</p>
+            </div>
+
+            <div class="quote-card quote-reveal highlight-box" style="--reveal-delay: 450ms;">
+              <span class="quote-mark">“</span>
+              <p class="quote-line" id="scene2-line-2">And honestly, I regret it.</p>
+            </div>
+          </div>
+
+          <p class="handwritten-annotation" id="scene2-note">No excuses. Just owning up to my mistake.</p>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" class="btn-primary" id="btn-scene-2">
+            <span class="btn-text" id="scene2-btn-text">THERE'S MORE I WANT TO SAY →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SCENE 3: MORE THAN A FRIEND (Brotherhood)
+         ======================================================== -->
+    <section class="scene-panel" id="scene-3" data-scene="3" aria-labelledby="scene3-headline">
+      <div class="panel-content">
+        <div class="letter-sheet brotherhood-sheet text-center">
+          <span class="eyebrow-pill" id="scene3-eyebrow">THE BOND</span>
+
+          <h2 class="headline-serif lead-quiet" id="scene3-headline">You're not just my friend.</h2>
+
+          <div class="brotherhood-revelation" id="scene3-revelation-box">
+            <div class="revelation-glow" aria-hidden="true"></div>
+            <div class="brotherhood-badge">
+              <svg class="brotherhood-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="brotherhood-title" id="scene3-emphasis">You're like my brother.</h3>
+          </div>
+
+          <div class="brotherhood-divider">
+            <span class="divider-line"></span>
+            <span class="divider-heart">❤️</span>
+            <span class="divider-line"></span>
+          </div>
+
+          <p class="brotherhood-subtext" id="scene3-subtext">
+            Some bonds are too meaningful to let a moment of anger shake what you mean to me.
+          </p>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" class="btn-primary" id="btn-scene-3">
+            <span class="btn-text" id="scene3-btn-text">LET ME EXPLAIN ❤️</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SCENE 4: THE ACTUAL APOLOGY (Sender's Exact Words)
+         ======================================================== -->
+    <section class="scene-panel" id="scene-4" data-scene="4" aria-labelledby="scene4-title">
+      <div class="panel-content">
+        <article class="letter-sheet formal-letter-sheet" id="formal-letter-card">
+          <header class="formal-letter-header">
+            <div class="letter-seal-mini" aria-hidden="true">
+              <span>✦</span>
+            </div>
+            <span class="eyebrow-pill" id="scene4-eyebrow">UNEDITED & FROM THE HEART</span>
+            <h2 class="letter-salutation-text" id="scene4-salutation">Tushar Bhai,</h2>
+          </header>
+
+          <!-- Exact sender message body rendered line by line -->
+          <div class="formal-letter-body" id="scene4-message-container">
+            <!-- Dynamically populated from config.js preserving exact wording -->
+          </div>
+
+          <footer class="formal-letter-footer">
+            <div class="handwritten-signoff" id="scene4-sender-signature">
+              With love, Zainab ❤️
+            </div>
+          </footer>
+        </article>
+
+        <div class="actions-row">
+          <button type="button" class="btn-primary" id="btn-scene-4">
+            <span class="btn-text" id="scene4-btn-text">ONE LAST THOUGHT →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SCENE 5: THE EMOTIONAL CLOSE (Hope & Sincerity)
+         ======================================================== -->
+    <section class="scene-panel" id="scene-5" data-scene="5" aria-labelledby="scene5-headline">
+      <div class="panel-content">
+        <div class="letter-sheet closure-sheet text-center">
+          <span class="eyebrow-pill" id="scene5-eyebrow">LOOKING AHEAD</span>
+
+          <h2 class="headline-serif" id="scene5-headline">
+            Some bonds matter too much to leave things unsaid.
+          </h2>
+
+          <!-- Connected lines / bond visual motif -->
+          <div class="connected-bond-motif" aria-hidden="true">
+            <div class="bond-line"></div>
+            <div class="bond-node">
+              <div class="node-inner">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="node-heart">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="bond-line"></div>
+          </div>
+
+          <p class="supporting-close-copy" id="scene5-supporting">
+            I’m sorry, bhai. You mean a lot to me, and I hope we can move forward.
+          </p>
+
+          <p class="reflection-subtext" id="scene5-reflection">
+            Your guidance and presence in my life are invaluable.
+          </p>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" class="btn-primary" id="btn-scene-5">
+            <span class="btn-text" id="scene5-btn-text">A FINAL NOTE →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SCENE 6: FINAL INTERACTION (Close & Sincerity)
+         ======================================================== -->
+    <section class="scene-panel" id="scene-6" data-scene="6" aria-labelledby="scene6-headline">
+      <div class="panel-content">
+
+        <!-- Active Final State before clicking close -->
+        <div class="letter-sheet final-sheet text-center" id="final-screen-open">
+          <span class="eyebrow-pill" id="scene6-eyebrow">ALWAYS RESPECTED</span>
+
+          <h2 class="final-headline" id="scene6-headline">
+            YOU'LL ALWAYS BE MORE THAN JUST A FRIEND. ❤️
+          </h2>
+
+          <div class="final-divider">
+            <span class="f-line"></span>
+            <span class="f-dot">✦</span>
+            <span class="f-line"></span>
+          </div>
+
+          <p class="final-supporting" id="scene6-supporting">
+            — A heartfelt apology, just for you.
+          </p>
+
+          <p class="final-sincerity-note" id="final-sender-note">
+            Made with sincerity by Zainab.
+          </p>
+
+          <div class="actions-row final-action-wrap">
+            <button type="button" class="btn-primary btn-close-letter" id="btn-close-letter">
+              <span class="btn-text" id="scene6-btn-text">CLOSE THE LETTER ❤️</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sealed / Closed State revealed upon clicking CLOSE THE LETTER -->
+        <div class="letter-sheet sealed-closed-sheet text-center hidden" id="final-screen-closed" aria-live="polite">
+          <div class="sealed-stamp-wrap">
+            <div class="closed-wax-seal">
+              <svg class="closed-seal-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+          </div>
+
+          <span class="closed-badge" id="closed-badge">SEALED WITH SINCERITY</span>
+          <h3 class="closed-title" id="closed-title">Letter Closed.</h3>
+
+          <p class="closed-thankyou" id="closed-thankyou">
+            Thank you for taking the time to read this, bhai.
+          </p>
+
+          <p class="closed-subtext" id="closed-subtext">
+            No rush, no expectations, and no pressure. Take all the time you need. I value you and our bond immensely.
+          </p>
+
+          <p class="closed-sincerity-note" id="closed-sender-signoff">
+            Made with sincerity by Zainab.
+          </p>
+
+          <div class="actions-row closed-actions">
+            <button type="button" class="btn-secondary" id="btn-restart">
+              <span class="btn-text" id="btn-restart-text">READ AGAIN ↺</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Keyboard and Accessibility Helper Announcement -->
+  <div id="a11y-status" class="sr-only" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
